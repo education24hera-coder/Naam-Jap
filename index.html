@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi" class="light">
 <head>
     <meta charset="UTF-8">
@@ -8255,25 +8255,26 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
             try { loadState(); } catch(e) { console.log(e); }
             
             var ph = window.localStorage.getItem('user_phone');
-            if(!ph) {
-                document.querySelectorAll('.page-section.active').forEach(function(e){ e.classList.remove('active'); });
-                document.getElementById('view-login').classList.add('active');
-            } else {
+            if(ph) {
                 state.userPhone = ph;
                 if(document.getElementById('profile-name-lbl')) {
                     document.getElementById('profile-name-lbl').innerText = "+91 " + ph;
                 }
-                
-                var loginEl = document.getElementById('view-login');
-                if(loginEl) loginEl.classList.remove('active');
-                
-                if(state.lang && state.religion) {
-                    navTo('home');
-                } else if(state.lang && !state.religion) {
-                    navTo('religion');
-                } else {
-                    navTo('language');
-                }
+            }
+            
+            // Instantly hide the login mask to restore previous app behavior
+            var loginEl = document.getElementById('view-login');
+            if(loginEl) {
+                loginEl.classList.remove('active');
+                setTimeout(function(){ loginEl.style.display = 'none'; }, 50);
+            }
+            
+            if(state.lang && state.religion) {
+                navTo('home');
+            } else if(state.lang && !state.religion) {
+                navTo('religion');
+            } else {
+                navTo('language');
             }
         };
 
@@ -8762,6 +8763,7 @@ if(typeof CATEGORY_UI !== 'undefined') {
 <script src="missing_content_patch.js"></script>
 </body>
 </html>
+
 
 
 
