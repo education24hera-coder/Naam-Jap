@@ -4349,7 +4349,7 @@ if(CATEGORY_UI) {
                         <input type="tel" maxlength="1" class="w-14 h-16 text-center text-3xl font-black bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-xl outline-none focus:border-saffron-500 shadow-sm transition-all text-slate-800 dark:text-white otp-input placeholder-slate-300" placeholder="-" onkeyup="moveOtp(this, 3)">
                     </div>
                     
-                    <button class="btn-giant w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl p-4 font-black shadow-lg shadow-emerald-500/30 flex justify-center items-center gap-2 text-lg tracking-wide hover:scale-[1.02]" onclick="document.getElementById('view-login').classList.remove('active'); document.getElementById('view-language').classList.add('active'); window.localStorage.setItem('user_phone', document.getElementById('login-phone-input').value);">
+                    <button class="btn-giant w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl p-4 font-black shadow-lg shadow-emerald-500/30 flex justify-center items-center gap-2 text-lg tracking-wide hover:scale-[1.02]" onclick="verifyLoginOTP()">
                         Verify & Login <ion-icon name="checkmark-circle-outline" class="text-xl"></ion-icon>
                     </button>
                     <button class="w-full text-slate-500 dark:text-slate-400 text-sm font-bold mt-6 underline underline-offset-4 active:text-slate-800 focus:outline-none" onclick="document.getElementById('login-otp-step').classList.add('hidden'); document.getElementById('login-phone-step').classList.remove('hidden');">Change Number</button>
@@ -8762,6 +8762,7 @@ if(typeof CATEGORY_UI !== 'undefined') {
 <script src="missing_content_patch.js"></script>
 </body>
 </html>
+
 
 
 
