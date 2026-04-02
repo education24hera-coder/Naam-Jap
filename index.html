@@ -8244,7 +8244,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 } else if(!state.religion) {
                     navTo('religion');
                 } else {
-                    navTo('home');
+                    navTo('category');
                 }
             } else {
                 toast();
@@ -8268,7 +8268,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 if(loginEl) loginEl.classList.remove('active');
                 
                 if(state.lang && state.religion) {
-                    navTo('home');
+                    navTo('category');
                 } else if(state.lang && !state.religion) {
                     navTo('religion');
                 } else {
@@ -8762,6 +8762,7 @@ if(typeof CATEGORY_UI !== 'undefined') {
 <script src="missing_content_patch.js"></script>
 </body>
 </html>
+
 
 
 
