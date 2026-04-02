@@ -4717,7 +4717,7 @@ if(CATEGORY_UI) {
                 
                 <div class="mb-4">
                     <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Time</label>
-                    <input type="time" id="alarm-time" class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-emerald-500 font-black text-lg text-center" onchange="state.reminderTime = this.value; saveState(); console.log('toast'));">
+                    <input type="time" id="alarm-time" class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-emerald-500 font-black text-lg text-center" onchange="state.reminderTime = this.value; saveState(); toast('Saved');">
                 </div>
                 
                 <div class="mb-6">
@@ -4749,7 +4749,7 @@ if(CATEGORY_UI) {
                     </div>
                 </div>
                 
-                <button onclick="state.reminderTime = ''; state.reminderChant = ''; document.getElementById('alarm-time').value = ''; document.getElementById('alarm-chant').value = ''; saveState(); window.navigator.vibrate && navigator.vibrate(50); console.log('toast');" class="w-full p-4 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-xl font-black active:scale-95 transition text-sm">Disable Alarm</button>
+                <button onclick="state.reminderTime = ''; state.reminderChant = ''; document.getElementById('alarm-time').value = ''; document.getElementById('alarm-chant').value = ''; saveState(); window.navigator.vibrate && navigator.vibrate(50); toast();" class="w-full p-4 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-xl font-black active:scale-95 transition text-sm">Disable Alarm</button>
             </div>
         </section>
 
@@ -7279,7 +7279,7 @@ if(typeof window.DATA_DB !== 'undefined') {
             }, 30000);
         }
 
-        function console.log('toast') {
+        function toast(msg) {
             var t = document.createElement('div');
             t.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-slate-800 dark:bg-white dark:text-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl z-[100] animate-bounce transition';
             t.textContent = msg;
@@ -7354,10 +7354,10 @@ if(typeof window.DATA_DB !== 'undefined') {
                 state.karmaScore -= amount;
                 saveState();
                 updateUI();
-                console.log('toast');
+                toast();
                 if(window.navigator && window.navigator.vibrate) navigator.vibrate([20, 100, 20]);
             } else {
-                console.log('toast');
+                toast();
             }
         }
 
@@ -7573,7 +7573,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 if(state.target > 0 && state.count > 0 && state.count % state.target === 0) {
                     if(!state.karmaScore) state.karmaScore = 0;
                     state.karmaScore++;
-                    console.log('toast');
+                    toast();
                     if(window.navigator && window.navigator.vibrate) navigator.vibrate([100, 50, 100]);
                 }
                 if(state.count >= 1 && state.lastChantDate !== today) { state.streak++; state.lastChantDate = today; }
@@ -7668,7 +7668,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                     setTimeout(function() { cd.classList.remove('scale-110'); }, 200);
                 }
                 updateUI();
-                console.log('toast');
+                toast();
             } catch(e) {}
         }
 
@@ -7947,7 +7947,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 if(!state.karmaScore) state.karmaScore = 0;
                 state.karmaScore += 10;
                 saveState(); updateUI();
-                console.log('toast');
+                toast();
                 if(navigator.vibrate) navigator.vibrate([100,50,100]);
             };
 
@@ -7975,7 +7975,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
 
         function toggleAutoChant() {
             if(!window.speechSynthesis) {
-                console.log('toast');
+                toast();
                 return;
             }
             isAutoChanting = !isAutoChanting;
@@ -8006,12 +8006,12 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                     window.speechSynthesis.speak(u);
                 };
                 speakChant();
-                console.log('toast');
+                toast();
             } else {
                 btn.classList.remove('!bg-indigo-600', '!text-white');
                 clearTimeout(autoChantInterval);
                 window.speechSynthesis.cancel();
-                console.log('toast');
+                toast();
             }
         }
 
@@ -8236,7 +8236,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 window.localStorage.setItem('user_phone', ph);
                 state.userPhone = ph;
                 document.getElementById('profile-name-lbl').innerText = "+91 " + ph;
-                console.log('toast');
+                toast();
                 
                 document.getElementById('view-login').classList.remove('active');
                 if(!state.lang) {
@@ -8247,7 +8247,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                     navTo('home');
                 }
             } else {
-                console.log('toast');
+                toast();
             }
         };
 
@@ -8302,13 +8302,13 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
             
             if(type === 'om') {
                 btnOm.classList.replace('border-slate-100', 'border-emerald-400'); btnOm.classList.replace('dark:border-slate-600', 'dark:border-emerald-500');
-                playOmSynth(); console.log('toast');
+                playOmSynth(); toast();
             } else if(type === 'river') {
                 btnRiver.classList.replace('border-slate-100', 'border-emerald-400'); btnRiver.classList.replace('dark:border-slate-600', 'dark:border-emerald-500');
-                playRiverSynth(); console.log('toast');
+                playRiverSynth(); toast();
             } else if(type === 'bell') {
                 btnBell.classList.replace('border-slate-100', 'border-emerald-400'); btnBell.classList.replace('dark:border-slate-600', 'dark:border-emerald-500');
-                playBellSynth(); console.log('toast');
+                playBellSynth(); toast();
                 activeAmbientNodes.intervalId = setInterval(playBellSynth, 8000);
             }
         }
@@ -8442,7 +8442,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                     btnIcon.name = 'stop';
                     btn.classList.remove('bg-rose-100', 'text-rose-700');
                     btn.classList.add('animate-pulse', 'bg-rose-500', 'text-white');
-                    console.log('toast')...");
+                    toast("...");
                     
                     mediaRecorder = new MediaRecorder(stream);
                     audioChunks = [];
@@ -8455,7 +8455,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                         reader.onloadend = function() {
                             state.customChantAudio = reader.result;
                             saveState();
-                            console.log('toast');
+                            toast();
                         }
                         // try to stop the tracks to turn off the actual mic light
                         stream.getTracks().forEach(track => track.stop());
@@ -8762,6 +8762,10 @@ if(typeof CATEGORY_UI !== 'undefined') {
 <script src="missing_content_patch.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 
