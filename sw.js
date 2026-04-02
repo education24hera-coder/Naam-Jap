@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'naam-jap-cache-v8';
+﻿const CACHE_NAME = 'naam-jap-cache-v9';
 const urlsToCache = [
   './index.html',
   './manifest.json',
@@ -61,6 +61,7 @@ self.addEventListener('activate', event => {
     })
   );
 });
+
 
 
 

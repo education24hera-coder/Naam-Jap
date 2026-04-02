@@ -8239,7 +8239,7 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 console.log('toast');
                 
                 document.getElementById('view-login').classList.remove('active');
-                if(!state.language) {
+                if(!state.lang) {
                     navTo('language');
                 } else if(!state.religion) {
                     navTo('religion');
@@ -8267,9 +8267,9 @@ document.getElementById('yt-player-wrapper').innerHTML = iframeHtml; var officia
                 var loginEl = document.getElementById('view-login');
                 if(loginEl) loginEl.classList.remove('active');
                 
-                if(state.language && state.religion) {
+                if(state.lang && state.religion) {
                     navTo('home');
-                } else if(state.language && !state.religion) {
+                } else if(state.lang && !state.religion) {
                     navTo('religion');
                 } else {
                     document.getElementById('view-language').classList.add('active');
@@ -8762,6 +8762,7 @@ if(typeof CATEGORY_UI !== 'undefined') {
 <script src="missing_content_patch.js"></script>
 </body>
 </html>
+
 
 
 
